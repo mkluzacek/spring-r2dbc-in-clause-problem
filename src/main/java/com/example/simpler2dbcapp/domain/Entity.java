@@ -1,14 +1,13 @@
 package com.example.simpler2dbcapp.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Objects;
 
 @Table("entity")
-public class Entity implements Persistable<Long> {
+public class Entity {
 
   @Id
   @Column("entity_id")
@@ -41,20 +40,6 @@ public class Entity implements Persistable<Long> {
   @Override
   public int hashCode() {
     return Objects.hash(entityId);
-  }
-
-  public Entity withId(Long entityId) {
-    return new Entity(entityId);
-  }
-
-  @Override
-  public Long getId() {
-    return entityId;
-  }
-
-  @Override
-  public boolean isNew() {
-    return true;
   }
 
 }
