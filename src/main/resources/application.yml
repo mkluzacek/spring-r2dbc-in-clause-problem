@@ -1,0 +1,29 @@
+# PostgreSQL database settings
+database:
+  # PostgreSQL db hostname
+  host: ${DB_HOST:localhost}
+
+  # PostgreSQL db port
+  port: ${DB_PORT:5432}
+
+  # Database name
+  name: ${DB_NAME:test}
+
+  # Database username
+  user: ${DB_USER:test}
+
+  # Database user password
+  password: ${DB_PASSWORD:test}
+
+
+spring:
+  flyway:
+    url: "jdbc:postgresql://${database.host}:${database.port}/${database.name}"
+    user: ${database.user}
+    password: ${database.password}
+    baseline-on-migrate: true
+
+  r2dbc:
+    url: r2dbc:postgresql://${database.host}:${database.port}/${database.name}
+    username: ${database.user}
+    password: ${database.password}
